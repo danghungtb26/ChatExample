@@ -80,6 +80,7 @@ authRouters.post('/sign_up', upload.none(), (req, res) => {
             }
             const newUser = new User(hashUser)
             newUser.save((err, user) => {
+              console.log('err', err)
               if (err) {
                 res.status(422)
                 res.json({ success: false, msg: 'tài khoản đã tồn tại.' })

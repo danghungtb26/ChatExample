@@ -1,12 +1,12 @@
-var config = {};
+const config = {}
 
-config.admin={};
+config.admin = {}
 
-config.app={};
+config.app = {}
 
-config.admin.name="hung";
-config.admin.email="dvhchuot@gmail.com";
-config.app.name="ChatServer";
-config.app.url="";
+config.admin.name = 'hung'
+config.admin.email = 'dvhchuot@gmail.com'
+config.app.name = 'ChatServer'
+config.app.url = ''
 
-module.exports=config
+module.exports = config

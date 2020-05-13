@@ -2,7 +2,7 @@ import express from 'express'
 // import http from 'http'
 import bodyParser from 'body-parser'
 import _ from 'lodash'
-import './api/database'
+// import './api/database'
 import passport from 'passport'
 import cors from 'cors'
 import setup from './api/database/passport_config'
@@ -77,6 +77,7 @@ _.uniq(list).forEach(rou => {
 })
 
 app.use((err, req, res, next) => {
+  console.log('req', req)
   console.log('This is the invalid field ->', err.field)
   res.header('Access-Control-Allow-Origin', '*')
   res.header(
@@ -98,6 +99,19 @@ app.use((err, req, res, next) => {
   next()
 })
 
-app.listen(hostApi, () => {
+const server = require('http').createServer(app)
+
+const io = require('socket.io')(server)
+
+server.listen(5555, () => {
   console.log(`Server is listening on port ${hostApi}`)
+})
+
+io.on('connection', s => {
+  console.log('a user connected')
+  s.emit('test', { a: 'a' })
+
+  s.on('client-test', e => {
+    console.log('e', e)
+  })
 })

@@ -39,7 +39,6 @@ const User = new Schema(
     //   },
     type: {
       type: String,
-      required: true,
     },
     supplier: {
       type: Schema.Types.ObjectId,

@@ -112,6 +112,10 @@ io.on('connection', s => {
   s.emit('test', { a: 'a' })
 
   s.on('client-test', e => {
-    console.log('e', e)
+    console.log(`eee - ${Date().toString()}---${JSON.stringify(e)}`)
+  })
+
+  s.on('disconnect', () => {
+    console.log('disconnect')
   })
 })
